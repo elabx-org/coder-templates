@@ -33,7 +33,9 @@ RUN curl -fsSL https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz \
     | tar -xz -C /usr/local
 
 # Create coder user with passwordless sudo
-RUN useradd -m -s /bin/bash -u 1000 coder \
+# Ubuntu 24.04 ships with an 'ubuntu' user at UID 1000 — remove it first
+RUN userdel -r ubuntu 2>/dev/null || true \
+    && useradd -m -s /bin/bash -u 1000 coder \
     && echo "coder ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/coder \
     && chmod 0440 /etc/sudoers.d/coder
 
