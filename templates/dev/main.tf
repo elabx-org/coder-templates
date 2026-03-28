@@ -120,8 +120,4 @@ resource "docker_container" "workspace" {
     read_only      = false
   }
 
-  volumes {
-    host_path      = "/var/run/docker.sock"
-    container_path = "/var/run/docker.sock"
-  }
 }
