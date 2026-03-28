@@ -44,6 +44,6 @@ ENV PATH="/usr/local/go/bin:/usr/local/kotlinc/bin:/home/coder/.local/bin:${PATH
 
 # Install Claude Code as coder user
 USER coder
-RUN curl -fsSL https://claude.ai/install.sh | sh
+RUN curl -fsSL https://claude.ai/install.sh | bash
 
 WORKDIR /home/coder
